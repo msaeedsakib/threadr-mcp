@@ -6,14 +6,28 @@
   "bin": {
     "threadr-mcp": "build/index.js"
   },
+  "files": [
+    "build",
+    "LICENSE",
+    "README.md"
+  ],
   "scripts": {
     "build": "tsc",
     "test": "bun test",
     "start": "node build/index.js",
-    "dev": "bun run src/index.ts"
+    "dev": "bun run src/index.ts",
+    "prepublishOnly": "npm run build"
   },
   "engines": {
     "node": ">=18"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/msaeedsakib/threadr-mcp.git"
+  },
+  "homepage": "https://github.com/msaeedsakib/threadr-mcp#readme",
+  "bugs": {
+    "url": "https://github.com/msaeedsakib/threadr-mcp/issues"
   },
   "keywords": [
     "mcp",
