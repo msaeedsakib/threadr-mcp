@@ -1,0 +1,35 @@
+{
+  "name": "threadr-mcp",
+  "version": "1.0.0",
+  "description": "A Model Context Protocol server that gives AI agents full access to Reddit",
+  "type": "module",
+  "bin": {
+    "threadr-mcp": "build/index.js"
+  },
+  "scripts": {
+    "build": "tsc",
+    "test": "bun test",
+    "start": "node build/index.js",
+    "dev": "bun run src/index.ts"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "keywords": [
+    "mcp",
+    "reddit",
+    "model-context-protocol",
+    "ai",
+    "claude"
+  ],
+  "author": "msaeedsakib",
+  "license": "MIT",
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.28.0",
+    "zod": "^3.24.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.0.0",
+    "typescript": "^5.7.0"
+  }
+}
