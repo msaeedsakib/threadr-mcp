@@ -47,13 +47,14 @@ export class RateLimiter {
       const parsed = parseFloat(remaining);
       if (!isNaN(parsed)) {
         this.tokens = Math.min(Math.floor(parsed), this.bucketSize);
+        this.lastRefill = Date.now();
       }
     }
 
     if (reset !== null) {
       const resetSeconds = parseFloat(reset);
-      if (!isNaN(resetSeconds)) {
-        this.lastRefill = Date.now() + resetSeconds * 1000 - this.bucketSize * this.refillRateMs;
+      if (!isNaN(resetSeconds) && resetSeconds > 0) {
+        this.lastRefill = Date.now();
       }
     }
   }
