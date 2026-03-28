@@ -53,6 +53,7 @@ export class RedditClient {
 
     const headers: Record<string, string> = {
       "User-Agent": this.auth.getUserAgent(),
+      "Accept": "application/json",
     };
 
     if (isAuthenticated) {
@@ -94,6 +95,12 @@ export class RedditClient {
         });
 
         this.rateLimiter.adjustFromHeaders(response.headers);
+      }
+
+      const contentType = response.headers.get("content-type") ?? "";
+      if (!contentType.includes("json")) {
+        const text = await response.text();
+        throw new Error(`Reddit returned non-JSON response (${response.status}): ${text.slice(0, 100)}`);
       }
 
       const data = (await response.json()) as T;
